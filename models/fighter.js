@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = require('./index');
+
 
 class Fighter extends Model {
 
@@ -10,6 +12,16 @@ class Fighter extends Model {
       nickname: DataTypes.STRING,
       birthdate: DataTypes.DATEONLY,
       height: DataTypes.FLOAT,
+      division: DataTypes.ENUM(
+        'Heavyweight',
+        'Light Heavyweight',
+        'Middleweight',
+        'Welterweight',
+        'Lightweight',
+        'Featherweight',
+        'Bantamweight',
+        'Flyweight'
+        ),
       nationality: DataTypes.STRING,
       city: DataTypes.STRING,
       ranking: DataTypes.INTEGER,
@@ -18,7 +30,14 @@ class Fighter extends Model {
     {
       sequelize,
       modelName: 'Fighter',
-      paranoid: true
+      paranoid: true,
+      indexes: [
+        {
+          unique: true,
+          fields: ['division', 'ranking'],
+          name: 'unique_ranking_per_division',
+        },
+      ],
     }
   )
 
