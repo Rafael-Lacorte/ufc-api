@@ -9,8 +9,8 @@ class Fighter extends Model {
   Fighter.init(
     {
       fullName: DataTypes.STRING,
-      nickname: DataTypes.STRING,
-      birthdate: DataTypes.DATEONLY,
+      nickName: DataTypes.STRING,
+      birthDate: DataTypes.DATEONLY,
       height: DataTypes.FLOAT,
       division: DataTypes.ENUM(
         'Heavyweight',

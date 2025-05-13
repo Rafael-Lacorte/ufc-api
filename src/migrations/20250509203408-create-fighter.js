@@ -14,11 +14,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      nickname: {
+      nickName: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      birthdate: {
+      birthDate: {
         type: Sequelize.DATEONLY,
         allowNull: false,
       },
