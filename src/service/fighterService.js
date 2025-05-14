@@ -26,19 +26,18 @@ const getFighterById = async (id) => {
     return await Fighter.findByPk(id);
 }
 
-const updateFighterById = async () => {
+const updateFighter = async (id, newData) => {
 
-    return fighter.update(
-    newData, { where: { id }})
+    return Fighter.update(newData, { where: { id } })
 };
 
 const deleteFighter = async (id) => {
-    fighter.destroy({ where: { id }});
+    Fighter.destroy({ where: { id }});
 }
 
 module.exports = { 
     createFighter,
     getFighterById,
-    updateFighterById,
+    updateFighter,
     deleteFighter
 };
