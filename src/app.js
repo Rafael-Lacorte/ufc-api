@@ -2,9 +2,11 @@ const express = require('express');
 
 const app = express();
 
-app.get('/figher/:id', (req, res) => res.status(200).json({ message: "Olá Mundo!" }));
+const fighterController = require('./controller/fighterController');
 
-app.post('/figher/', (req, res) => res.status(200).json({ message: "Olá Mundo!" }));
+app.get('/fighter/:id', fighterController.getFighterById);
+
+app.post('/fighter/', fighterController.createFighter);
 
 app.put('/figher/:id', (req, res) => res.status(200).json({ message: "Olá Mundo!" }));
 

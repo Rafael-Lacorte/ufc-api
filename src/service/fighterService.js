@@ -1,4 +1,4 @@
-const fighter = require('../models/fighter');
+const { Fighter } = require('../models');
 
 const createFighter = async (
     fullName,
@@ -9,9 +9,8 @@ const createFighter = async (
     nationality,
     city,
     ranking,
-    champion
 ) => {
-    return fighter.create(
+    return Fighter.create(
         fullName,
         nickName,
         birthDate,
@@ -20,12 +19,11 @@ const createFighter = async (
         nationality,
         city,
         ranking,
-        champion
     )
 }
 
 const getFighterById = async (id) => {
-    return fighter.findByPk(id);
+    return await Fighter.findByPk(id);
 }
 
 const updateFighterById = async () => {
