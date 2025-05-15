@@ -51,8 +51,19 @@ const updateFighter = async (req, res) => {
 };
 
 const deleteFighter = async (req, res) => {
-    return;
-}
+    const { id } = req.params;
+    try {
+        const response = await fighterService.deleteFighter(id);
+        if(response == 0) {
+            return res.status(404).json({ message: 'Fighter not found or already deleted'});
+        }
+        return res.status(201).json({ message:"Fighter Deleted"});
+
+    } catch(error) {
+        console.log("error in updateFighter", error);
+        return res.status(500).json({ message: "internal server error"})
+    }
+};
 
 
 

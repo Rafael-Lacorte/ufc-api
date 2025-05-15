@@ -32,7 +32,7 @@ const updateFighter = async (id, newData) => {
 };
 
 const deleteFighter = async (id) => {
-    Fighter.destroy({ where: { id }});
+    return Fighter.destroy({ where: { id }});
 }
 
 module.exports = { 
