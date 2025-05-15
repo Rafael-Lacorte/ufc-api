@@ -1,7 +1,11 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Fighter extends Model {}
+  class Fighter extends Model {
+    static associate(models) {
+      Fighter.hasMany(models.Ranking, { foreignKey: 'fighterId' })
+    }
+  }
 
     Fighter.init(
       {
@@ -24,21 +28,12 @@ module.exports = (sequelize, DataTypes) => {
         wins: DataTypes.INTEGER,
         losses: DataTypes.INTEGER,
         draws: DataTypes.INTEGER,
-        ranking: DataTypes.INTEGER,
       },
       {
         sequelize,
         modelName: 'Fighter',
         paranoid: true,
-        indexes: [
-          {
-            unique: true,
-            fields: ['division', 'ranking'],
-            name: 'unique_ranking_per_division',
-          },
-        ],
       }
     )
-
   return Fighter
 }

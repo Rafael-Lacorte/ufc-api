@@ -59,10 +59,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
-      ranking: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
