@@ -50,10 +50,15 @@ const updateFighter = async (req, res) => {
     }
 };
 
+const deleteFighter = async (req, res) => {
+    return;
+}
+
 
 
 module.exports = {
     createFighter,
     getFighterById,
-    updateFighter
+    updateFighter,
+    deleteFighter
 }
