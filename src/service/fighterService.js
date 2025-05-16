@@ -28,11 +28,11 @@ const getFighterById = async (id) => {
 
 const updateFighter = async (id, newData) => {
 
-    return Fighter.update(newData, { where: { id } })
+    return await Fighter.update(newData, { where: { id } })
 };
 
 const deleteFighter = async (id) => {
-    return Fighter.destroy({ where: { id }});
+    return await Fighter.destroy({ where: { id }});
 }
 
 module.exports = { 
