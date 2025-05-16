@@ -7,7 +7,7 @@ const createFighter = async (req, res) => {
         return res.status(201).json(response);
     } catch(error) {
         console.log("error in createFighter", error);
-        return res.status(500).json({ message: "internal server error"})
+        return res.status(500).json({ message: "Internal server error"})
     }
     
 
@@ -27,7 +27,7 @@ const getFighterById = async (req, res) => {
 
     } catch(error) {
         console.log("error in getFighterById", error);
-        return res.status(500).json({ message: "internal server error"})
+        return res.status(500).json({ message: "Internal server error"})
     }
 };
 
@@ -46,7 +46,7 @@ const updateFighter = async (req, res) => {
 
     } catch(error) {
         console.log("error in updateFighter", error);
-        return res.status(500).json({ message: "internal server error"})
+        return res.status(500).json({ message: "Internal server error"})
     }
 };
 
@@ -61,7 +61,7 @@ const deleteFighter = async (req, res) => {
 
     } catch(error) {
         console.log("error in updateFighter", error);
-        return res.status(500).json({ message: "internal server error"})
+        return res.status(500).json({ message: "Internal server error"})
     }
 };
 
