@@ -72,17 +72,9 @@ module.exports = {
         allowNull: true,
       },
     })
-
-    await queryInterface.addConstraint('Fighters', {
-      fields: ['division', 'ranking'],
-      type: 'unique',
-      name: 'unique_ranking_per_division',
-    });
-
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('Fighters', 'unique_ranking_per_division');
     await queryInterface.dropTable('Fighters');
      
   }

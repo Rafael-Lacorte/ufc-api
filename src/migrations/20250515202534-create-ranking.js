@@ -42,7 +42,7 @@ module.exports = {
           'Bantamweight',
           'Flyweight'
         ),
-        allowNull: true, // null for P4P rankings
+        allowNull: true,
       },
       isCurrent: {
         type: Sequelize.BOOLEAN,
