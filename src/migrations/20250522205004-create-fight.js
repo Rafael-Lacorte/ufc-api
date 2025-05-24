@@ -2,15 +2,65 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('fights', {
+    await queryInterface.createTable('Fights', {
       id: {
-        allowNull: false,
+        type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        allowNull: false,
       },
-      name: {
-        type: Sequelize.STRING
+      eventId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Events',
+          key: 'id'
+        } 
+      },
+      date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      fighterA: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Fighters',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull:false
+      },
+      fighterB: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Fighters',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull:false,
+      },
+      winnerId : {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Fighters',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull:true,
+      },
+      result: {
+        type: Sequelize.ENUM(
+          'KO/TKO',
+          'Submission',
+          'Decision - Unanimous',
+          'Decision - Split',
+          'No Contest',
+          'DQ'
+        ),
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
@@ -23,6 +73,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('fights');
+    await queryInterface.dropTable('Fights');
   }
 };
