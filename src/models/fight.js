@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Fight.init({
     eventId: DataTypes.INTEGER,
-    date: DataTypes.DATEONLY,
     fighterA: DataTypes.INTEGER,
     fighterB: DataTypes.INTEGER,
     winnerId: DataTypes.INTEGER,

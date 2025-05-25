@@ -17,10 +17,6 @@ module.exports = {
           key: 'id'
         } 
       },
-      date: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
       fighterA: {
         type: Sequelize.INTEGER,
         references: {
@@ -61,6 +57,22 @@ module.exports = {
           'DQ'
         ),
         allowNull:false
+      },
+      round: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      endMinute: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      endSecond: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      isTitleFight: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
