@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Fight.belongsTo(models.Fighter, { foreignKey: 'fighterB'});
       Fight.belongsTo(models.Fighter, { foreignKey: 'winner'});
 
-      Fight.belongsTo(models.Evennt, { foreignKey: 'eventId'});
+      Fight.belongsTo(models.Event, { foreignKey: 'eventId'});
     }
   }
   Fight.init({
@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Fight',
+    paranoid: true
   });
   return Fight;
 };

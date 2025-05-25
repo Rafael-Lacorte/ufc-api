@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Event.init({
-    name: DataTypes.INTEGER,
+    name: DataTypes.STRING,
     date: DataTypes.DATEONLY,
     country: DataTypes.STRING,
     city: DataTypes.STRING,
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Event',
+    paranoid: true
   });
   return Event;
 };
