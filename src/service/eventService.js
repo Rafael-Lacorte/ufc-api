@@ -17,15 +17,15 @@ const createEvent = async (
 }
 
 const getEventById = async (id) => {
-    return await Event.findByPk(id);
+  return await Event.findByPk(id);
 }
 
 const updateEvent = async (id, newData) => {
-    return await Event.update(newData, { where: { id } })
+  return await Event.update(newData, { where: { id } })
 };
 
 const deleteEvent = async (id) => {
-    return await Event.destroy({ where: { id }});
+  return await Event.destroy({ where: { id }});
 }
 
 module.exports = { 
