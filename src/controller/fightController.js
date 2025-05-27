@@ -33,7 +33,7 @@ const getFightsByFighterId = async (req, res) => {
   const { id } = req.params;
 
   try {
-      const response = await fightService.getFightsByFighterId(id);
+      const response = await fightService.getFightByFighterId(id);
       if (!response) {
           return res.status(404).json({ message: 'Fights not found'});
 
