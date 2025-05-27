@@ -7,7 +7,7 @@ const createEvent = async (
     city,
     arena
 ) => {
-    return Fighter.create(
+    return Event.create(
         name,
         date,
         country,
