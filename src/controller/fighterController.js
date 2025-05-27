@@ -9,8 +9,6 @@ const createFighter = async (req, res) => {
         console.log("error in createFighter", error);
         return res.status(500).json({ message: "Internal server error"})
     }
-    
-
 };
 
 const getFighterById = async (req, res) => {

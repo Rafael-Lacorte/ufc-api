@@ -9,8 +9,6 @@ const createEvent = async (req, res) => {
         console.log("error in createEvent", error);
         return res.status(500).json({ message: "Internal server error"})
     }
-    
-
 };
 
 const getEventById = async (req, res) => {
