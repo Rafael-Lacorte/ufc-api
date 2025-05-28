@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Fight.belongsTo(models.Fighter, { foreignKey: 'fighterA'});
       Fight.belongsTo(models.Fighter, { foreignKey: 'fighterB'});
-      Fight.belongsTo(models.Fighter, { foreignKey: 'winner'});
+      Fight.belongsTo(models.Fighter, { foreignKey: 'winnerId'});
 
       Fight.belongsTo(models.Event, { foreignKey: 'eventId'});
     }

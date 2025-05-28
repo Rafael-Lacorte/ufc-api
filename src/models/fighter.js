@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       
       Fighter.hasMany(models.Fight, { foreignKey: 'fighterA' });
       Fighter.hasMany(models.Fight, { foreignKey: 'fighterB' });
-      Fighter.hasMany(models.Fight, { foreignKey: 'winner' });
+      Fighter.hasMany(models.Fight, { foreignKey: 'winnerId' });
 
     }
   }
