@@ -30,10 +30,10 @@ const getFightById = async (req, res) => {
 };
 
 const getFightsByFighterId = async (req, res) => {
-  const { id } = req.params;
+  const { fighterId } = req.params;
 
   try {
-      const response = await fightService.getFightByFighterId(id);
+      const response = await fightService.getFightByFighterId(fighterId);
       if (!response) {
           return res.status(404).json({ message: 'Fights not found'});
 
@@ -47,10 +47,9 @@ const getFightsByFighterId = async (req, res) => {
 };
 
 const getFightsByEventId = async (req, res) => {
-  const { id } = req.params;
-
+  const { eventId } = req.params;
   try {
-    const response = fightService.getFightsByEventId(id);
+    const response = await fightService.getFightsByEventId(eventId);
     if(!response) {
       return res.status(404).json({ message: "Fights not found"});
     }
