@@ -43,6 +43,38 @@ const shouldCreate = async (newRecord, currentRecord, typeOfRanking) => {
   return true;
 }
 
+const getAllActiveRankingsRecords = async () => {
+  const rankings = await  Ranking.findAll({
+  where: {
+      isCurrent: true
+    },
+    include: {
+      model: require('../models').Fighter,
+      attributes: ['fullName']
+
+    }
+  });
+
+  const grouped = rankings.reduce((acc, ranking) => {
+    const key = ranking.type === 'p4p' ? 'p4p' : ranking.division;
+
+    if (!acc[key]) acc[key] = [];
+
+      
+      acc[key].push({
+        fullName: ranking.Fighter.fullName,
+        position: ranking.position,
+        type: ranking.type,
+        division: ranking.division,
+        isCurrent: ranking.isCurrent
+      });
+      
+      return acc;
+    }, {});
+
+  return grouped;
+};
+
 const getCurrentFighterRankingsRecord = async (id) => {
   return Ranking.findOne({
   where: {
@@ -99,6 +131,7 @@ const deleteRankings = async (id) => {
 
 module.exports = {
     getDivisionRankings,
+    getAllActiveRankingsRecords,
     getCurrentFighterRankingsRecord,
     getP4pRankings,
     createRankingRecord,

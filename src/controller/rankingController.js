@@ -12,6 +12,20 @@ const createRankingsRecord = async (req,res) => {
   }
 }
 
+const getAllActiveRankingsRecords = async (req, res) => {
+  try {
+    const response = await rankingService.getAllActiveRankingsRecords();
+    if (!response) {
+      return res.status(404).json({ message: 'Ranking record not found'});
+    };
+
+    return res.status(201).json(response);
+  } catch (error) {
+    console.log('error in getAllActiveRankingsRecords', error)
+    return res.status(500).json({ message: "Internal server error"})
+  }
+}
+
 const getDivisionRankings = async (req, res) => {
   const { division } = req.params
 
@@ -68,5 +82,6 @@ module.exports = {
     getP4pRankings,
     getCurrentFighterRankingsRecord,
     createRankingsRecord,
-    deleteRanking
+    deleteRanking,
+    getAllActiveRankingsRecords
 };

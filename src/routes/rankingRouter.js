@@ -7,6 +7,7 @@ router.post('/:typeOfRanking', rankingController.createRankingsRecord)
 router.get('/p4p', rankingController.getP4pRankings);
 router.get('/division/:division', rankingController.getDivisionRankings);
 router.get('/:id', rankingController.getCurrentFighterRankingsRecord);
+router.get('/', rankingController.getAllActiveRankingsRecords);
 
 
 module.exports = router;
