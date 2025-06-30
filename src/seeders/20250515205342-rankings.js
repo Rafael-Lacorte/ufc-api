@@ -124,9 +124,9 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Islam Makhachev - lightweight #0 (Champion)
+      // Ilia Topuria - lightweight #0 (Champion)
       {
-        fighterId: 15,
+        fighterId: 3,
         position: 0,
         type: 'division',
         division: 'lightweight',

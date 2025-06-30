@@ -19,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         birthDate: DataTypes.DATEONLY,
         height: DataTypes.FLOAT,
         division: DataTypes.ENUM(
-          'Heavyweight',
-          'Light Heavyweight',
-          'Middleweight',
-          'Welterweight',
-          'Lightweight',
-          'Featherweight',
-          'Bantamweight',
-          'Flyweight'
+          'heavyweight',
+          'light_heavyweight',
+          'middleweight',
+          'welterweight',
+          'lightweight',
+          'featherweight',
+          'bantamweight',
+          'flyweight'
           ),
         nationality: DataTypes.STRING,
         city: DataTypes.STRING,

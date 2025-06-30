@@ -28,14 +28,14 @@ module.exports = {
       },
       division: {
         type: Sequelize.ENUM(
-          'Heavyweight',
-          'Light Heavyweight',
-          'Middleweight',
-          'Welterweight',
-          'Lightweight',
-          'Featherweight',
-          'Bantamweight',
-          'Flyweight'
+          'heavyweight',
+          'light_heavyweight',
+          'middleweight',
+          'welterweight',
+          'lightweight',
+          'featherweight',
+          'bantamweight',
+          'flyweight'
         ),
         allowNull: false,
       },
