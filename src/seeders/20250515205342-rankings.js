@@ -14,7 +14,7 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Alex Pereira - lightheavyweight #1
+      // Alex Pereira - light_heavyweight #1
       {
         fighterId: 2,
         position: 1,
@@ -34,52 +34,52 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Dominick Reyes - lightheavyweight #8
+      // Dominick Reyes - light_heavyweight #8
       {
         fighterId: 5,
         position: 8,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jiri Prochazka - lightheavyweight #2
+      // Jiri Prochazka - light_heavyweight #2
       {
         fighterId: 6,
         position: 2,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jamahal Hill - lightheavyweight #4
+      // Jamahal Hill - light_heavyweight #4
       {
         fighterId: 7,
         position: 4,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jan Blachowicz - lightheavyweight #5
+      // Jan Blachowicz - light_heavyweight #5
       {
         fighterId: 8,
         position: 5,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Khalil Rountree - lightheavyweight #7
+      // Khalil Rountree - light_heavyweight #7
       {
         fighterId: 9,
         position: 7,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
