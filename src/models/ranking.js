@@ -16,14 +16,14 @@ module.exports = (sequelize, DataTypes) => {
       'p4p',
       ),
       division: DataTypes.ENUM(
-        'Heavyweight',
-        'Light Heavyweight',
-        'Middleweight',
-        'Welterweight',
-        'Lightweight',
-        'Featherweight',
-        'Bantamweight',
-        'Flyweight'
+        'heavyweight',
+        'light_heavyweight',
+        'middleweight',
+        'welterweight',
+        'lightweight',
+        'featherweight',
+        'bantamweight',
+        'flyweight'
       ),
       isCurrent: DataTypes.BOOLEAN
     },

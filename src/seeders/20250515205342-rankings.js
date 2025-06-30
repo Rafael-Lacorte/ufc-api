@@ -19,7 +19,7 @@ module.exports = {
         fighterId: 2,
         position: 1,
         type: 'division',
-        division: 'lightheavyweight',
+        division: 'light_heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
