@@ -4,162 +4,162 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Rankings', [
-      // Charles Oliveira - Lightweight #2
+      // Charles Oliveira - lightweight #2
       {
         fighterId: 1,
         position: 2,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Alex Pereira - Light Heavyweight #1
+      // Alex Pereira - lightheavyweight #1
       {
         fighterId: 2,
         position: 1,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Khamzat Chimaev - Middleweight #3
+      // Khamzat Chimaev - middleweight #3
       {
         fighterId: 4,
         position: 3,
         type: 'division',
-        division: 'Middleweight',
+        division: 'middleweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Dominick Reyes - Light Heavyweight #8
+      // Dominick Reyes - lightheavyweight #8
       {
         fighterId: 5,
         position: 8,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jiri Prochazka - Light Heavyweight #2
+      // Jiri Prochazka - lightheavyweight #2
       {
         fighterId: 6,
         position: 2,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jamahal Hill - Light Heavyweight #4
+      // Jamahal Hill - lightheavyweight #4
       {
         fighterId: 7,
         position: 4,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Jan Blachowicz - Light Heavyweight #5
+      // Jan Blachowicz - lightheavyweight #5
       {
         fighterId: 8,
         position: 5,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Khalil Rountree - Light Heavyweight #7
+      // Khalil Rountree - lightheavyweight #7
       {
         fighterId: 9,
         position: 7,
         type: 'division',
-        division: 'Light Heavyweight',
+        division: 'lightheavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Tom Aspinall - Heavyweight #1
+      // Tom Aspinall - heavyweight #1
       {
         fighterId: 10,
         position: 1,
         type: 'division',
-        division: 'Heavyweight',
+        division: 'heavyweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Dustin Poirier - Lightweight #5
+      // Dustin Poirier - lightweight #5
       {
         fighterId: 11,
         position: 5,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Justin Gaethje - Lightweight #3
+      // Justin Gaethje - lightweight #3
       {
         fighterId: 12,
         position: 3,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Michael Chandler - Lightweight #12
+      // Michael Chandler - lightweight #12
       {
         fighterId: 13,
         position: 12,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Islam Makhachev - Lightweight #0 (Champion)
+      // Islam Makhachev - lightweight #0 (Champion)
       {
         fighterId: 15,
         position: 0,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Alexander Volkanovski - Featherweight #0 (Champion)
+      // Alexander Volkanovski - featherweight #0 (Champion)
       {
         fighterId: 16,
         position: 0,
         type: 'division',
-        division: 'Featherweight',
+        division: 'featherweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Diego Lopes - Featherweight #2
+      // Diego Lopes - featherweight #2
       {
         fighterId: 17,
         position: 2,
         type: 'division',
-        division: 'Featherweight',
+        division: 'featherweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // Max Holloway - Lightweight #4
+      // Max Holloway - lightweight #4
       {
         fighterId: 18,
         position: 4,
         type: 'division',
-        division: 'Lightweight',
+        division: 'lightweight',
         isCurrent: true,
         createdAt: new Date(),
         updatedAt: new Date()
