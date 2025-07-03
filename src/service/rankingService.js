@@ -47,7 +47,10 @@ const getAllActiveRankingsRecords = async () => {
   const rankings = await  Ranking.findAll({
   where: {
       isCurrent: true
-    },
+  },
+  order:[
+    ['position', 'ASC']
+  ],
     include: {
       model: require('../models').Fighter,
       attributes: ['fullName']
