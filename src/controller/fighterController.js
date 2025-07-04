@@ -29,6 +29,24 @@ const getFighterById = async (req, res) => {
     }
 };
 
+const getAllFighters = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const response = await fighterService.getAllFighters();
+
+        if (!response) {
+            return res.status(404).json({ message: 'Fighters not found'});
+ 
+        }
+        return res.status(201).json(response);
+
+    } catch(error) {
+        console.log("error in getAllFighters", error);
+        return res.status(500).json({ message: "Internal server error"})
+    }
+};
+
 const updateFighter = async (req, res) => {
     const { id } = req.params;
     const newData = req.body;
@@ -68,6 +86,7 @@ const deleteFighter = async (req, res) => {
 module.exports = {
     createFighter,
     getFighterById,
+    getAllFighters,
     updateFighter,
     deleteFighter
 }

@@ -8,7 +8,9 @@ const createFighter = async (
     division,
     nationality,
     city,
-    ranking,
+    wins,
+    losses,
+    draws
 ) => {
     return Fighter.create(
         fullName,
@@ -18,12 +20,18 @@ const createFighter = async (
         division,
         nationality,
         city,
-        ranking,
+        wins,
+        losses,
+        draws
     )
 }
 
 const getFighterById = async (id) => {
     return await Fighter.findByPk(id);
+}
+
+const getAllFighters = async (id) => {
+    return await Fighter.findAll();
 }
 
 const updateFighter = async (id, newData) => {
@@ -38,6 +46,7 @@ const deleteFighter = async (id) => {
 module.exports = { 
     createFighter,
     getFighterById,
+    getAllFighters,
     updateFighter,
     deleteFighter
 };
