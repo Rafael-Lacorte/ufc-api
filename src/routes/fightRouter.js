@@ -7,8 +7,8 @@ router.post('/', fightController.createFight);
 
 router.get('/fighter/:fighterId', fightController.getFightsByFighterId);
 router.get('/event/:eventId', fightController.getFightsByEventId);
+router.get('/fighter/history/:id', fightController.getFightsAndEventByFighter);
 router.get('/:id', fightController.getFightById);
-
 router.put('/:id', fightController.updateFight);
 router.delete('/:id', fightController.deleteFight)
 

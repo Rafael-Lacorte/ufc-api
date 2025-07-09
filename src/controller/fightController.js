@@ -57,6 +57,20 @@ const getFightsByEventId = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Interval server error"});
   }
+};
+
+const getFightsAndEventByFighter = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await fightService.getFightsAndEventsByFighter(id);
+    if(!response) {
+      return res.status(404).json({ message: "X Fights not found X"});
+    }
+    return res.status(200).json(response);
+  } catch (error) {
+    console.error('ERROR!!!', error)
+    return res.status(500).json({ message: "Interval server error"});
+  }
 }
 
 const updateFight = async (req, res) => {
@@ -93,13 +107,12 @@ const deleteFight = async (req, res) => {
     }
 };
 
-
-
 module.exports = {
     createFight,
     getFightById,
     getFightsByFighterId,
     getFightsByEventId,
+    getFightsAndEventByFighter,
     updateFight,
     deleteFight
 }
