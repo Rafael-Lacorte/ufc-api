@@ -3,6 +3,7 @@ const eventController = require('../controller/eventController');
 
 const router = Router();
 
+router.get('/upcoming', eventController.getEventUpComingEvents);
 router.post('/', eventController.createEvent);
 router.get('/:id', eventController.getEventById);
 router.put('/:id', eventController.updateEvent);

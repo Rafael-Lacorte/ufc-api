@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { Event } = require('../models');
 
 const createEvent = async (
@@ -20,6 +21,20 @@ const getEventById = async (id) => {
   return await Event.findByPk(id);
 }
 
+const getUpComingEvents = async () => {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  return await Event.findAll({
+    where: {
+      date: {
+        [Op.gte]: today
+      }
+    },
+    order: [['date', 'ASC']]
+  });
+}
+
 const updateEvent = async (id, newData) => {
   return await Event.update(newData, { where: { id } })
 };
@@ -31,6 +46,7 @@ const deleteEvent = async (id) => {
 module.exports = { 
     createEvent,
     getEventById,
+    getUpComingEvents,
     updateEvent,
     deleteEvent
 };

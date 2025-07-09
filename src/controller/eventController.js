@@ -29,6 +29,22 @@ const getEventById = async (req, res) => {
     }
 };
 
+const getEventUpComingEvents = async (req, res) => {
+    try {
+        const response = await eventService.getUpComingEvents();
+
+        if (!response) {
+            return res.status(404).json({ message: 'Events not found'});
+ 
+        }
+        return res.status(201).json(response);
+
+    } catch(error) {
+        console.log("error in getUpComingEvents", error);
+        return res.status(500).json({ message: "Internal server error"})
+    }
+};
+
 const updateEvent = async (req, res) => {
     const { id } = req.params;
     const newData = req.body;
@@ -68,6 +84,7 @@ const deleteEvent = async (req, res) => {
 module.exports = {
     createEvent,
     getEventById,
+    getEventUpComingEvents,
     updateEvent,
     deleteEvent
 }
