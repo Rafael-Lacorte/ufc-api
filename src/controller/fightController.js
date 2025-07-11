@@ -55,6 +55,7 @@ const getFightsByEventId = async (req, res) => {
     }
     return res.status(201).json(response);
   } catch (error) {
+    console.error('error on getFightsByEventId', error)
     return res.status(500).json({ message: "Interval server error"});
   }
 };
@@ -68,7 +69,7 @@ const getFightsAndEventByFighter = async (req, res) => {
     }
     return res.status(200).json(response);
   } catch (error) {
-    console.error('ERROR!!!', error)
+    console.error('error on getFightsAndEventsByFighter', error)
     return res.status(500).json({ message: "Interval server error"});
   }
 }

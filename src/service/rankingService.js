@@ -1,5 +1,4 @@
 const { Ranking, sequelize } = require('../models');
-const fighter = require('../models/fighter');
 
 const createRankingRecord = async (rankingRecords, typeOfRanking) => {
 const transaction = await sequelize.transaction();
