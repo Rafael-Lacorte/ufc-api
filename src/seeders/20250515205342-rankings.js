@@ -87,7 +87,7 @@ module.exports = {
       // Tom Aspinall - heavyweight #1
       {
         fighterId: 10,
-        position: 1,
+        position: 0,
         type: 'division',
         division: 'heavyweight',
         isCurrent: true,

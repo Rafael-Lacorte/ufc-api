@@ -64,12 +64,12 @@ const getFightsAndEventsByFighter = async(id) => {
       {
         model: Fighter,
         as: 'FighterA', // Use the same alias you defined in your association
-        attributes: ['id', 'fullName', 'nickName', 'nationality']
+        attributes: ['id', 'fullName', 'nickName', 'birthDate', 'height', 'division', 'nationality']
       },
       {
         model: Fighter,
         as: 'FighterB', // Use the same alias you defined in your association
-        attributes: ['id', 'fullName', 'nickName', 'nationality']
+        attributes: ['id', 'fullName', 'nickName', 'birthDate', 'height', 'division', 'nationality']
       }
     ],
     order: [
@@ -81,7 +81,6 @@ const getFightsAndEventsByFighter = async(id) => {
     const isFighterA = fight.fighterA === parseInt(id);
     const opponent = isFighterA ? fight.FighterB : fight.FighterB;
     const fighter = isFighterA ? fight.FighterA: fight.FighterB; 
-
 
     return {
       id: fight.id,
@@ -96,6 +95,9 @@ const getFightsAndEventsByFighter = async(id) => {
         id: fighter.id,
         fullName: fighter.fullName,
         nickName: fighter.nickName,
+        birthDate: fighter.birthDate,
+        height: fighter.height,
+        division: fighter.division,
         nationality: fighter.nationality
       },
       opponent: {
