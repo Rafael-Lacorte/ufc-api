@@ -89,43 +89,43 @@ const getCurrentFighterRankingsRecord = async (id) => {
 
 
 const getCurrentFighterRankingsRecordByType = async (id, typeOfRanking) => {
-  return Ranking.findOne({
-  where: {
-      fighterId: id,
-      type: typeOfRanking,
-      isCurrent: true
-    }
-  });
-};
+    return Ranking.findOne({
+    where: {
+        fighterId: id,
+        type: typeOfRanking,
+        isCurrent: true
+      }
+    });
+  };
   
 
 const getDivisionRankings = async (division) => {
-  return await Ranking.findAll({
-      where: {
-          division: division,
-          isCurrent: true
-      },
-      order: [
-          ['position', 'ASC']
-      ]
-  });
+    return await Ranking.findAll({
+        where: {
+            division: division,
+            isCurrent: true
+        },
+        order: [
+            ['position', 'ASC']
+        ]
+    });
 };
 
 const getP4pRankings = async () => {
-  return await Ranking.findAll({
-      attributes: ['id', 'position', 'fighterId'],
-      where: {
-          type: 'p4p',
-          isCurrent: true
-      },
-      order: [
-          ['position', 'ASC']
-      ],
-      include: {
-          model: require('../models').Fighter,
-          attributes: ['id', 'fullName', 'nickName', 'division', 'wins', 'losses']
-      },
-  });
+    return await Ranking.findAll({
+        attributes: ['id', 'position', 'fighterId'],
+        where: {
+            type: 'p4p',
+            isCurrent: true
+        },
+        order: [
+            ['position', 'ASC']
+        ],
+        include: {
+            model: require('../models').Fighter,
+            attributes: ['id', 'fullName', 'nickName', 'division', 'wins', 'losses']
+        },
+    });
 };
 
 const deleteRankings = async (id) => {
