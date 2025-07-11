@@ -74,6 +74,7 @@ module.exports = {
     })
   },
 
+  // eslint-disable-next-line no-unused-vars
   async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('Fighters');
      

@@ -30,7 +30,7 @@ const getFighterById = async (id) => {
     return await Fighter.findByPk(id);
 }
 
-const getAllFighters = async (id) => {
+const getAllFighters = async () => {
     return await Fighter.findAll();
 }
 

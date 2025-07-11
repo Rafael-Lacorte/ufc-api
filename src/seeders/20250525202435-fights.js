@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -185,7 +186,6 @@ module.exports = {
           round: 2,
           endMinute: 4,
           endSecond: 8,
-          isTitleFight: true,
           isTitleFight: true,
           createdAt: new Date(),
           updatedAt: new Date()

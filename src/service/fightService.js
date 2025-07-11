@@ -1,4 +1,4 @@
-const { Op, where, Model } = require('sequelize');
+const { Op } = require('sequelize');
 const { Fight } = require('../models');
 const { Fighter } = require('../models');
 const { Event } = require('../models');

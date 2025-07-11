@@ -1,8 +1,5 @@
 'use strict';
 
-const { ENUM, QueryError } = require('sequelize');
-const { sequelize } = require('../models');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -70,6 +67,7 @@ module.exports = {
     })
   },
 
+  // eslint-disable-next-line no-unused-vars
   async down (queryInterface, Sequelize) {
     await queryInterface.removeConstraint('Rankings', 'unique_ranking_per_division_type');
     await queryInterface.dropTable('Rankings');

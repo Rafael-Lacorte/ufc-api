@@ -30,8 +30,6 @@ const getFighterById = async (req, res) => {
 };
 
 const getAllFighters = async (req, res) => {
-    const { id } = req.params;
-
     try {
         const response = await fighterService.getAllFighters();
 

@@ -3,7 +3,7 @@ const { Ranking, sequelize } = require('../models');
 const createRankingRecord = async (rankingRecords, typeOfRanking) => {
 const transaction = await sequelize.transaction();
   try {
-    for(record of rankingRecords) {
+    for(const record of rankingRecords) {
       const currentRecord = await getCurrentFighterRankingsRecordByType(record.fighterId, typeOfRanking);
         if(await shouldCreate(record, currentRecord, typeOfRanking)) {
           if(currentRecord) {

@@ -5,7 +5,7 @@ const createRankingsRecord = async (req,res) => {
   const { typeOfRanking } = req.params
   try {
     const response = await rankingService.createRankingRecord(rankingData, typeOfRanking);
-    return res.status(201).json({ message: 'Ranking created successfully' });
+    return res.status(201).json({response});
   } catch (error) {
     console.log("error in createRankingRecord", error);
     return res.status(500).json({ message: "Internal server error" })
@@ -47,6 +47,8 @@ const getCurrentFighterRankingsRecord = async (req, res) => {
     };
     return res.status(201).json(response);
   } catch (error) {
+    console.log("error in getCurrentFighterRankingsRecord", error);
+    return res.status(500).json({ message: "Internal server error" })
   }
 };
 
