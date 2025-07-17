@@ -5,9 +5,8 @@ const router = Router();
 
 router.post('/', fighterController.createFighter);
 router.get('/:id', fighterController.getFighterById);
+router.get('/', fighterController.getAllFighters);
 router.put('/:id', fighterController.updateFighter);
 router.delete('/:id', fighterController.deleteFighter);
-router.get('/', fighterController.getAllFighters);
-
 
 module.exports = router;

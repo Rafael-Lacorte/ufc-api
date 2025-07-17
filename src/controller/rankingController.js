@@ -19,7 +19,7 @@ const getAllActiveRankingsRecords = async (req, res) => {
       return res.status(404).json({ message: 'Ranking record not found'});
     };
 
-    return res.status(201).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.log('error in getAllActiveRankingsRecords', error)
     return res.status(500).json({ message: "Internal server error"})
@@ -31,7 +31,7 @@ const getDivisionRankings = async (req, res) => {
 
   try {
     const response = await rankingService.getDivisionRankings(division);
-    return res.status(201).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.log("error in getDivisionRankings", error);
     return res.status(500).json({ message: "Internal server error" })
@@ -45,7 +45,7 @@ const getCurrentFighterRankingsRecord = async (req, res) => {
     if (!response) {
       return res.status(404).json({ message: 'Ranking record not found'});
     };
-    return res.status(201).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.log("error in getCurrentFighterRankingsRecord", error);
     return res.status(500).json({ message: "Internal server error" })
@@ -58,7 +58,7 @@ const getP4pRankings = async (req, res) => {
     if(!response) {
         return res.status(404).json({ message: 'Ranking records not found'})
     }
-    return res.status(201).json(response)
+    return res.status(200).json(response)
   } catch (error) {
       console.log("error in getP4pRankings", error);
       return res.status(500).json({ message: "Internal server error" })
@@ -72,7 +72,7 @@ const deleteRanking = async (req, res) => {
     if(!response) {
         return res.status(201).json({ message: 'Ranking record not found'})
     }
-    return res.status(201).json(response)
+    return res.status(204).json(response)
   } catch (error) {
       console.log("error in deleteRankings", error);
       return res.status(500).json({ message: "Internal server error" })

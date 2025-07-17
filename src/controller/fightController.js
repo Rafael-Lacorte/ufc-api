@@ -21,7 +21,7 @@ const getFightById = async (req, res) => {
             return res.status(404).json({ message: 'Fight not found'});
  
         }
-        return res.status(201).json(response);
+        return res.status(200).json(response);
 
     } catch(error) {
         console.log("error in getFightById", error);
@@ -38,7 +38,7 @@ const getFightsByFighterId = async (req, res) => {
           return res.status(404).json({ message: 'Fights not found'});
 
       }
-      return res.status(201).json(response);
+      return res.status(200).json(response);
 
   } catch(error) {
       console.log("error in getFightsByFighterId", error);
@@ -53,7 +53,7 @@ const getFightsByEventId = async (req, res) => {
     if(!response) {
       return res.status(404).json({ message: "Fights not found"});
     }
-    return res.status(201).json(response);
+    return res.status(200).json(response);
   } catch (error) {
     console.error('error on getFightsByEventId', error)
     return res.status(500).json({ message: "Interval server error"});
@@ -85,7 +85,7 @@ const updateFight = async (req, res) => {
             return res.status(404).json({ message: 'Fight not found or wrong field name'});
  
         }
-        return res.status(201).json({message: 'Fight updated Successfully'});
+        return res.status(204).json({message: 'Fight updated Successfully'});
 
     } catch(error) {
         console.log("error in updateFight", error);
@@ -100,7 +100,7 @@ const deleteFight = async (req, res) => {
         if(response == 0) {
             return res.status(404).json({ message: 'Fight not found or already deleted'});
         }
-        return res.status(201).json({ message:"Fight Deleted"});
+        return res.status(204).json({ message:"Fight Deleted"});
 
     } catch(error) {
         console.log("error in updateFight", error);

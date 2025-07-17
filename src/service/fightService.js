@@ -28,7 +28,7 @@ const createFight = async (
 };
 
 const getFightById = async (id) => {
-  return await Fight.findByPk(id);
+  return await Fight.findByPk(id, { where: { deletedAt: null } });
 };
 
 const getFightByFighterId = async (id) => {
@@ -37,7 +37,8 @@ const getFightByFighterId = async (id) => {
       [Op.or]: [
         { fighterA: id },
         { fighterB: id }
-      ]
+      ],
+      deletedAt: null
     }
   });
 };
@@ -45,7 +46,9 @@ const getFightByFighterId = async (id) => {
 const getFightsByEventId = async (id) => {
   return await Fight.findAll({
     where: {
-      eventId: id
+      eventId: id,
+      deletedAt: null
+      
     }
   })
 };
@@ -54,7 +57,8 @@ const getFightsAndEventsByFighter = async(id) => {
 
   const fightsAndEvents = await Fight.findAll({
     where: {
-      [Op.or]: [{fighterA: id}, {fighterB: id}]
+      [Op.or]: [{fighterA: id}, {fighterB: id}],
+      deleteAt: null
     },
     include: [
       {

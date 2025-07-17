@@ -45,7 +45,8 @@ const shouldCreate = async (newRecord, currentRecord, typeOfRanking) => {
 const getAllActiveRankingsRecords = async () => {
   const rankings = await  Ranking.findAll({
   where: {
-      isCurrent: true
+      isCurrent: true,
+      deleteAt: null
   },
   order:[
     ['position', 'ASC']
@@ -81,7 +82,8 @@ const getCurrentFighterRankingsRecord = async (id) => {
   return Ranking.findOne({
   where: {
       fighterId: id,
-      isCurrent: true
+      isCurrent: true,
+      deletedAt: null
     }
   });
 };
@@ -92,7 +94,8 @@ const getCurrentFighterRankingsRecordByType = async (id, typeOfRanking) => {
     where: {
         fighterId: id,
         type: typeOfRanking,
-        isCurrent: true
+        isCurrent: true,
+        deletedAt:null
       }
     });
   };
@@ -102,7 +105,8 @@ const getDivisionRankings = async (division) => {
     return await Ranking.findAll({
         where: {
             division: division,
-            isCurrent: true
+            isCurrent: true,
+            deletedAt:null
         },
         order: [
             ['position', 'ASC']
@@ -115,7 +119,8 @@ const getP4pRankings = async () => {
         attributes: ['id', 'position', 'fighterId'],
         where: {
             type: 'p4p',
-            isCurrent: true
+            isCurrent: true,
+            deletedAt: null
         },
         order: [
             ['position', 'ASC']

@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
 
 const config = {
   username: process.env.MYSQL_USER,
@@ -6,6 +8,7 @@ const config = {
   database: process.env.MYSQL_DATABASE,
   host: process.env.MYSQL_HOST,
   dialect: 'mysql',
+  logging: false
 };
 
 module.exports = {

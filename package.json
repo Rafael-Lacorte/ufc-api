@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage --detectOpenHandles",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
@@ -23,10 +23,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.30.1",
     "globals": "^16.3.0",
     "jest": "^30.0.4",
     "nodemon": "^3.1.10",
-    "sequelize-cli": "^6.6.3"
+    "sequelize-cli": "^6.6.3",
+    "supertest": "^7.1.3"
   }
 }

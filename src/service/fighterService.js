@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { Fighter } = require('../models');
 
 const createFighter = async (
@@ -27,11 +28,11 @@ const createFighter = async (
 }
 
 const getFighterById = async (id) => {
-    return await Fighter.findByPk(id);
+    return await Fighter.findByPk(id, { where: { deletedAt: null } });
 }
 
 const getAllFighters = async () => {
-    return await Fighter.findAll();
+    return await Fighter.findAll({ where: { deletedAt: null } });
 }
 
 const updateFighter = async (id, newData) => {

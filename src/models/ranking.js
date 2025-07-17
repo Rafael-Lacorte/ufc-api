@@ -34,9 +34,9 @@ module.exports = (sequelize, DataTypes) => {
     indexes: [
         {
         unique: true,
-        fields: ['type', 'division', 'ranking'],
+        fields: ['type', 'division', 'position'],
         where: { isCurrent: true },
-        name: 'unique_ranking_per_division_type',
+        name: 'unique_position_per_division_type',
         },
     ],
     }

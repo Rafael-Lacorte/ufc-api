@@ -18,7 +18,7 @@ const createEvent = async (
 }
 
 const getEventById = async (id) => {
-  return await Event.findByPk(id);
+  return await Event.findByPk(id, { where: { deletedAt: null } });
 }
 
 const getUpComingEvents = async () => {

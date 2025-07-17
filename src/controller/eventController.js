@@ -21,7 +21,7 @@ const getEventById = async (req, res) => {
             return res.status(404).json({ message: 'Event not found'});
  
         }
-        return res.status(201).json(response);
+        return res.status(200).json(response);
 
     } catch(error) {
         console.log("error in getEventById", error);
@@ -37,7 +37,7 @@ const getEventUpComingEvents = async (req, res) => {
             return res.status(404).json({ message: 'Events not found'});
  
         }
-        return res.status(201).json(response);
+        return res.status(200).json(response);
 
     } catch(error) {
         console.log("error in getUpComingEvents", error);
@@ -56,7 +56,7 @@ const updateEvent = async (req, res) => {
             return res.status(404).json({ message: 'Event not found or wrong field name'});
  
         }
-        return res.status(201).json({message: 'Event updated Successfully'});
+        return res.status(204).json({message: 'Event updated Successfully'});
 
     } catch(error) {
         console.log("error in updateEvent", error);
@@ -71,7 +71,7 @@ const deleteEvent = async (req, res) => {
         if(response == 0) {
             return res.status(404).json({ message: 'Event not found or already deleted'});
         }
-        return res.status(201).json({ message:"Event Deleted"});
+        return res.status(204).json({ message:"Event Deleted"});
 
     } catch(error) {
         console.log("error in updateEvent", error);

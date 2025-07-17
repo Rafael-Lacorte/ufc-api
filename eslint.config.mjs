@@ -8,5 +8,18 @@ export default defineConfig([
   { files: ["**/*.{js,mjs,cjs}"], languageOptions: { globals: globals.node } },
   {"rules": {
     "no-unused-vars": 'warn'
-  }}
+  }},
+  {
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+  }
 ]);
