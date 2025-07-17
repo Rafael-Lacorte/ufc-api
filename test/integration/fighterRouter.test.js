@@ -1,9 +1,6 @@
 const app = require('../../src/app');
 const request = require('supertest');
-
 const { expect, describe,  } = require('@jest/globals');
-
-
 const { sequelize } = require('../../src/models');
 
 beforeEach( async () => {
