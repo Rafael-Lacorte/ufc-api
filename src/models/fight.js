@@ -21,12 +21,12 @@ module.exports = (sequelize, DataTypes) => {
     fighterB: DataTypes.INTEGER,
     winnerId: DataTypes.INTEGER,
     result: DataTypes.ENUM(
-      'KO/TKO',
-      'Submission',
-      'Decision - Unanimous',
-      'Decision - Split',
-      'No Contest',
-      'DQ'
+      'ko_tko',
+      'submission',
+      'decision_unanimous',
+      'decision_split',
+      'no_contest',
+      'dq'
     ),
     round:{
       type: DataTypes.INTEGER,

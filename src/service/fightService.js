@@ -2,29 +2,16 @@ const { Op } = require('sequelize');
 const { Fight } = require('../models');
 const { Fighter } = require('../models');
 const { Event } = require('../models');
+const { fightSchema, updateFightSchema } = require('./validation/fightSchemas');
 
-const createFight = async (
-    eventId,
-    fighterA,
-    fighterB,
-    winnerId,
-    result,
-    round,
-    endMinute,
-    endSecond,
-    isTitleFight
-) => {
-    return Fight.create(
-      eventId,
-      fighterA,
-      fighterB,
-      winnerId,
-      result,
-      round,
-      endMinute,
-      endSecond,
-      isTitleFight
-    )
+const createFight = async (fightData) => {
+  try {
+    const validated = await fightSchema.validateAsync(fightData, { abortEarly: false})
+    return Fight.create(validated)
+  } catch (error) {
+    console.log("Validation error:", error.details?.[0]?.message || error.message );
+    throw error;
+  }
 };
 
 const getFightById = async (id) => {
@@ -115,7 +102,15 @@ const getFightsAndEventsByFighter = async(id) => {
 }
 
 const updateFight = async (id, newData) => {
-  return await Fight.update(newData, { where: { id } })
+  try {
+    const validated = await updateFightSchema.validateAsync(newData, { abortEarly: false });
+    return await Fight.update(validated, { where: { id } });
+  
+  } catch (error) {
+    console.log("Validation error:", error.details?.[0]?.message || error.message );
+    throw error;
+  }
+
 };
 
 const deleteFight = async (id) => {

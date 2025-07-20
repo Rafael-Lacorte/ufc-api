@@ -6,6 +6,13 @@ const createFight = async (req, res) => {
         const response = await fightService.createFight(fightData);
         return res.status(201).json(response);
     } catch(error) {
+        if (error.isJoi) {
+        return res.status(400).json({
+          message: "Validation error",
+          details: error.details.map(detail => detail.message)
+        });
+      }
+
         console.log("error in createFight", error);
         return res.status(500).json({ message: "Internal server error"})
     }
@@ -88,6 +95,13 @@ const updateFight = async (req, res) => {
         return res.status(204).json({message: 'Fight updated Successfully'});
 
     } catch(error) {
+        if (error.isJoi) {
+        return res.status(400).json({
+          message: "Validation error",
+          details: error.details.map(detail => detail.message)
+        });
+      }
+      
         console.log("error in updateFight", error);
         return res.status(500).json({ message: "Internal server error"})
     }

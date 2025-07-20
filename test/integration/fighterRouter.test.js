@@ -1,7 +1,8 @@
 const app = require('../../src/app');
 const request = require('supertest');
-const { expect, describe,  } = require('@jest/globals');
+const { expect, describe, beforeEach, afterAll } = require('@jest/globals');
 const { sequelize } = require('../../src/models');
+const { JOHN_DOE, CLARK_KENT, TONY_STARK, createFighter } = require('../utils/testUtils');
 
 beforeEach( async () => {
   await sequelize.sync({ force: true });
@@ -11,59 +12,29 @@ afterAll( async () => {
   await sequelize.close();
 });
 
-const JOHN_DOE = {
-  fullName: "John Doe",
-  nickName: "The Remarkable",
-  birthDate: "2000-01-01",
-  height: 1.60,
-  division: "flyweight",
-  nationality: "United States",
-  city: "New Jersey",
-  wins: 10,
-  losses: 9,
-  draws: 1 
-};
-
-const CLARK_KENT = {
-  fullName: "Clark Kent",
-  nickName: "The Man of Steel",
-  birthDate: "1990-06-18",
-  height: 1.90,
-  division: "heavyweight",
-  nationality: "United States",
-  city: "Smallville",
-  wins: 999,
-  losses: 0,
-  draws: 0 
-};
-
-const TONY_STARK = {
-  fullName: "Tony Stark",
-  nickName: "Ironman",
-  birthDate: "1970-05-29",
-  height: 1.85,
-  division: "light_heavyweight",
-  nationality: "United States",
-  city: "New York",
-  wins: 95,
-  losses: 2,
-  draws: 1
-};
-
-const createFighter = async (fighter) => {
-  return await request(app).post('/fighter').send(fighter); 
-};
-
 describe('POST /fighter', () => {
   it('should create fighter', async () => {
     const res = await createFighter(JOHN_DOE);
 
     expect(res.status).toBe(201)
   });
+
+  it('should not create fighter with missing fields', async () => {
+    const fighterWithoutNameAndBirth = { ...JOHN_DOE };
+    delete fighterWithoutNameAndBirth.fullName;
+    delete fighterWithoutNameAndBirth.birthDate
+    const res = await createFighter(fighterWithoutNameAndBirth);
+
+    expect(res.status).toBe(400);
+    expect(res.body.details).toEqual(expect.arrayContaining([
+      expect.stringContaining("\"fullName\" is required"),
+      expect.stringContaining("\"birthDate\" is required")
+    ]));
+  });
 });
 
 describe('GET /fighter', () => {
-  it('should retrieve a fighter by id', async () => {
+  it('should retrieve a fighter by id with correct data fields', async () => {
     const createdRes = await createFighter(JOHN_DOE);
     const res = await request(app).get(`/fighter/${createdRes.body.id}`);
   
@@ -76,10 +47,11 @@ describe('GET /fighter', () => {
   });
 
   it('should retrive all the fighters', async () => {
-
-    await createFighter(JOHN_DOE);
-    await createFighter(CLARK_KENT);
-    await createFighter(TONY_STARK);
+    await Promise.all([
+      createFighter(JOHN_DOE),
+      createFighter(CLARK_KENT),
+      createFighter(TONY_STARK),
+    ]);
 
     const res = await request(app).get('/fighter');
 
@@ -88,8 +60,8 @@ describe('GET /fighter', () => {
     expect(res.body).toEqual(
       expect.arrayContaining([
         expect.objectContaining(JOHN_DOE),
-        expect.objectContaining( TONY_STARK),
         expect.objectContaining(CLARK_KENT),
+        expect.objectContaining(TONY_STARK),
         ])
       );
   });
@@ -108,6 +80,36 @@ describe('PUT /fighter', () => {
     expect(res.status).toBe(204);
     expect(updatedFighter.body.nickName).toBe('The Irrelevant');
   });
+
+  it('should return status 400 when no fields are sent in update request', async () => {
+    const createdRes = await createFighter(JOHN_DOE);
+
+    const res = await request(app)
+    .put(`/fighter/${createdRes.body.id}`)
+    .send({});
+
+    expect(res.status).toBe(400);
+    expect(res.body.details).toEqual(
+      expect.arrayContaining(
+        [expect.stringContaining("\"value\" must have at least 1 key")]
+      )
+    )
+  })
+
+  it('should return status 400 when trying to update fighter with invalid field', async () => {
+    const createdRes = await createFighter(JOHN_DOE);
+
+    const res = await request(app)
+    .put(`/fighter/${createdRes.body.id}`)
+    .send({reach: 1.70});
+
+    expect(res.status).toBe(400);
+    expect(res.body.details).toEqual(
+      expect.arrayContaining(
+        [expect.stringContaining("\"reach\" is not allowed")]
+      )
+    )
+  })
 });
 
 describe('DELETE /fighter', () => {
