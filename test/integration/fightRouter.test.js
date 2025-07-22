@@ -16,10 +16,9 @@ afterAll(async () => {
 describe('POST /fight', () => {
   it('should create fight', async () => {
 
-      const fighterA = await createFighter(CLARK_KENT)
-      const fighterB = await createFighter(JOHN_DOE)
-      const event1 = await createEvent(EVENT_MOCK_1)
-      const event2 = await createEvent(EVENT_MOCK_2)
+    const fighterA = await createFighter(CLARK_KENT)
+    const fighterB = await createFighter(JOHN_DOE)
+    const event1 = await createEvent(EVENT_MOCK_1)
 
     const res = await createFight({
       ...FIGHT_MOCK_1, 
@@ -28,7 +27,22 @@ describe('POST /fight', () => {
       fighterB: fighterB.body.id
     });
     expect(res.status).toBe(201);
+  });
 
+  it('should return error 400 and message when having missing field', async () => {
+
+    const incompleteFight = FIGHT_MOCK_1
+    delete incompleteFight.eventId
+    delete incompleteFight.fighterA
+    delete incompleteFight.fighterB
+    
+    const res = await createFight(incompleteFight);
+    expect(res.status).toBe(400);
+    expect(res.body.details).toEqual(expect.arrayContaining([
+      expect.stringContaining("\"eventId\" is required"),
+      expect.stringContaining("\"fighterA\" is required"),
+      expect.stringContaining("\"fighterB\" is required"),
+    ]));
   });
 
 });

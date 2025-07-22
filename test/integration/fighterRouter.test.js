@@ -19,7 +19,7 @@ describe('POST /fighter', () => {
     expect(res.status).toBe(201)
   });
 
-  it('should not create fighter with missing fields', async () => {
+  it('should return status 400 and message when having missing field', async () => {
     const fighterWithoutNameAndBirth = { ...JOHN_DOE };
     delete fighterWithoutNameAndBirth.fullName;
     delete fighterWithoutNameAndBirth.birthDate
@@ -81,7 +81,7 @@ describe('PUT /fighter', () => {
     expect(updatedFighter.body.nickName).toBe('The Irrelevant');
   });
 
-  it('should return status 400 when no fields are sent in update request', async () => {
+  it('should return status 400 and message when no fields are sent in update request', async () => {
     const createdRes = await createFighter(JOHN_DOE);
 
     const res = await request(app)
