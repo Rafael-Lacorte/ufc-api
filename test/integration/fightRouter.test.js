@@ -146,7 +146,6 @@ describe('GET /fight', () => {
   });
 
   it('should retrieve fights and event by fighter ', async () => {
-
-    
+ 
   });
 });
