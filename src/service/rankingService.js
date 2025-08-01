@@ -46,7 +46,7 @@ const getAllActiveRankingsRecords = async () => {
   const rankings = await  Ranking.findAll({
   where: {
       isCurrent: true,
-      deleteAt: null
+      deletedAt: null
   },
   order:[
     ['position', 'ASC']

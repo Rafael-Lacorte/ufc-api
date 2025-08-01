@@ -45,7 +45,7 @@ const getFightsAndEventsByFighter = async(id) => {
   const fightsAndEvents = await Fight.findAll({
     where: {
       [Op.or]: [{fighterA: id}, {fighterB: id}],
-      deleteAt: null
+      deletedAt: null
     },
     include: [
       {
